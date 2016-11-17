@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.king.smiletime.scandal.FirstFragment;
+import com.king.smiletime.video.VideoFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -41,7 +42,8 @@ public class MainActivity extends FragmentActivity {
 
                 break;
             case R.id.video_id:
-
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.tdfl_id,new VideoFragment()).commit();
                 break;
             case R.id.my_id:
 
