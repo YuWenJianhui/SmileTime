@@ -21,4 +21,8 @@
         <item></item>
         <item></item>
     </string-array>
+    <string-array name="tabNames3">
+        <item>全部</item>
+        <item>已粉</item>
+    </string-array>
 </resources>
