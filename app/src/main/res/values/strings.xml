@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SmileTime</string>
+    <string-array name="picNames">
+    <item>welcomeone</item>
+    <item>welcometow</item>
+    <item>welcomethree</item>
+    </string-array>
+</resources>

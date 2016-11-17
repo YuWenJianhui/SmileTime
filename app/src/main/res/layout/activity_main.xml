@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        tools:context="com.example.administrator.journalism.MainActivity">
+
+        <FrameLayout
+            android:id="@+id/tdfl_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+    <RadioGroup
+        android:id="@+id/ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/scandal_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/newsector"
+            android:gravity="center"
+            android:onClick="BtnAction"
+            android:text="糗事"
+            android:textColor="@drawable/testsector" />
+
+        <RadioButton
+            android:id="@+id/friend_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/delicatesector"
+            android:gravity="center"
+            android:onClick="BtnAction"
+            android:text="糗友圈"
+            android:textColor="@drawable/testsector" />
+
+        <RadioButton
+            android:id="@+id/video_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/peripherysector"
+            android:gravity="center"
+            android:onClick="BtnAction"
+            android:text="直播"
+            android:textColor="@drawable/testsector" />
+
+        <RadioButton
+            android:id="@+id/my_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/peoplesector"
+            android:gravity="center"
+            android:onClick="BtnAction"
+            android:text="我"
+            android:textColor="@drawable/testsector" />
+    </RadioGroup>
+</LinearLayout>
