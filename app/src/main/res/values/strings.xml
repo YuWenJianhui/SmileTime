@@ -5,4 +5,20 @@
     <item>welcometow</item>
     <item>welcomethree</item>
     </string-array>
+    <string-array name="tbname">
+        <item>专享</item>
+        <item>视频</item>
+        <item>纯文</item>
+        <item>纯图</item>
+        <item>精华</item>
+        <item>穿越</item>
+    </string-array>
+    <string-array name="url">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>
