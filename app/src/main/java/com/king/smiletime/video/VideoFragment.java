@@ -28,6 +28,8 @@ public class VideoFragment extends Fragment {
     private ViewPager viewPager;
     private String[] tabNames;
     private List<ThirdFragment> fragments;
+    private MyFragmentPagerAdapter adapter;
+    private List<String> mTblist;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,9 +42,9 @@ public class VideoFragment extends Fragment {
         view = inflater.inflate(R.layout.videofragment, null);
         //界面实例的初始化
         initWigets();
-
         //关于ViewPager的操作
-        aboutViewPager();
+        aboutView();
+
         //关于TabLayout
         aboutTabLayout();
         return view;
@@ -53,7 +55,7 @@ public class VideoFragment extends Fragment {
      */
     private void initWigets() {
         tabLayout =  (TabLayout) view.findViewById(R.id.tab_id);
-        viewPager = (ViewPager) view.findViewById(R.id.vp_id);
+        viewPager = (ViewPager) view.findViewById(R.id.vpger_id);
         tabNames = getResources().getStringArray(R.array.tabNames3);
 
 
@@ -62,25 +64,30 @@ public class VideoFragment extends Fragment {
     /**
      * 关于ViewPager的操作
      */
-    private void aboutViewPager() {
+    private void aboutView() {
 //        //数据源
 //        int i=0;
-//        fragments = new LinkedList<>();
-//        for(String tabName:tabNames){
-//            ThirdFragment fragment = new ThirdFragment();
-//            Bundle args = new Bundle();
-//            args.putString("tabName",tabName);
-//            //args.putString("url","");
-//            fragment.setArguments(args);
-//            fragments.add(fragment);
-//        }
-//        //适配器
-//        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getFragmentManager());
-//        //绑定
-//        viewPager.setAdapter(adapter);
-//        Log.i("msg","zoule");
+        fragments = new LinkedList<>();
+        for(String tabName:tabNames){
+            ThirdFragment fragment = new ThirdFragment();
+            Bundle args = new Bundle();
+            args.putString("tabName",tabName);
+            //args.putString("url","");
+            fragment.setArguments(args);
+            fragments.add(fragment);
+        }
+        for(Fragment fragment:fragments){
+            Log.i("msg",fragment+"");
+        }
+        //适配器
+        adapter = new MyFragmentPagerAdapter(getFragmentManager());
+        Log.i("msg", adapter +"");
+        //绑定
+        viewPager.setAdapter(adapter);
+        //viewPager.setAdapter(adapter);
+        Log.i("msg","zoule");
     }
-    public final class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
+    private final  class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -98,6 +105,7 @@ public class VideoFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
+            Log.i("msg",tabNames[position]);
             return tabNames[position];
         }
     }
