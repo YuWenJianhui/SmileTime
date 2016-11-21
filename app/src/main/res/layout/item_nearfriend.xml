@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/iv_User_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_User_id"
+        android:layout_alignBottom="@id/iv_User_id"
+        android:layout_marginLeft="18dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_UserName_id"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="爱我还是爱他"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_UserGender_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#81baff"
+                android:drawableLeft="@mipmap/one"
+                android:text="20"/>
+
+            <TextView
+                android:id="@+id/tv_UserConstellation_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:background="#a8a0f6"
+                android:text="水瓶"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_UserSignature_id"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="咋就穿不出来那感觉"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="0.5km|3天"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        />
+</RelativeLayout>
