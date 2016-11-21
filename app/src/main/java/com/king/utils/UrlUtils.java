@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +16,7 @@ import java.net.URL;
  */
 
 public class UrlUtils {
-    public static InputStream aboutur(String urls) {
+    public static String aboutur(String urls) {
         URL url = null;
         InputStream is = null;
         BufferedReader bufferedReader = null;
@@ -24,8 +25,9 @@ public class UrlUtils {
         try {
             url = new URL(urls);
             conn = (HttpURLConnection) url.openConnection();
-//            conn.setRequestMethod("GET");
+            conn.setRequestMethod("GET");
             conn.setConnectTimeout(10 * 1000);
+            conn.setReadTimeout(10*1000);
             ByteArrayOutputStream out = null;
             if (conn.getResponseCode() == 200) {
                 is = conn.getInputStream();
@@ -35,15 +37,16 @@ public class UrlUtils {
                 while ((len = is.read(b)) != -1) {
                     out.write(b, 0, len);
                 }
-                return new ByteArrayInputStream(out.toByteArray());
-//                bufferedReader = new BufferedReader(new InputStreamReader(is,"gb2312"));
-//                String mString = null;
-//
-//                while ((mString = bufferedReader.readLine()) != null) {
-//                    //把单个的字符串放到msb中
-//                    mSb.append(mString);
-//                }
-//                System.out.println(mSb.toString());
+
+                bufferedReader = new BufferedReader(new InputStreamReader(is,"gb2312"));
+                String mString = null;
+
+                while ((mString = bufferedReader.readLine()) != null) {
+                    //把单个的字符串放到msb中
+                    mSb.append(mString);
+                }
+                System.out.println(mSb.toString());
+                return mSb.toString();
             }
 
         } catch (MalformedURLException e) {
