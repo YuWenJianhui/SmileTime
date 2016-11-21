@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".my.activitys.UserEditorActivity" android:theme="@style/NobarTheme">
+        </activity>
+        <activity android:name=".my.activitys.UserLoginActivity"/>
+        <activity android:name=".my.activitys.ManagermentThingActivity"/>
     </application>
 
 </manifest>

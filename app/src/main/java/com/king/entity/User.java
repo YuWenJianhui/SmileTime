@@ -5,4 +5,6 @@ package com.king.entity;
  */
 
 public class User {
+
+
 }
