@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/iv_groupPhoto_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_groupPhoto_id"
+        android:layout_alignBottom="@id/iv_groupPhoto_id"
+        android:layout_marginLeft="18dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_groupName_id"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="单身男士碰碰碰"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_groupClass_id"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:background="@mipmap/one"
+                android:text="3"/>
+
+            <TextView
+                android:id="@+id/tv_memberNumber_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="95人"/>
+            <TextView
+                android:id="@+id/tv_cut_off_rule_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" | "/>
+            <TextView
+                android:id="@+id/tv_memberAddress_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="北京.东城"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_memberIntroduction_id"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="别想了都是男的，碰碰对就算了"/>
+    </LinearLayout>
+</RelativeLayout>
