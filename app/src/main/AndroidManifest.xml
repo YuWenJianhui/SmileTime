@@ -20,6 +20,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".my.activitys.UserInformationParticularsActivity" android:theme="@style/NobarTheme">
+        </activity>
+        <activity android:name=".my.activitys.UserLoginActivity"/>
+        <activity android:name=".my.activitys.ManagermentThingActivity"/>
+        <activity android:name=".my.activitys.AboutQiuBaiActivity"/>
+        <activity android:name=".my.activitys.BlacklistManageActivity"/>
+        <activity android:name=".my.activitys.NearFriendActivity"/>
+        <activity android:name=".my.activitys.IDPinlessActivity"/>
+        <activity android:name=".my.activitys.InformationSettingsActivity"/>
+        <activity android:name=".my.activitys.MyDynamicActivity"/>
+        <activity android:name=".my.activitys.UserHeadPortraitActivity"/>
+        <activity android:name=".my.activitys.UserEditorActivity"/>
+        <activity android:name=".my.activitys.MyMedalManageActivity"/>
+        <activity android:name=".my.activitys.MyCollectActivity"/>
+        <activity android:name=".my.activitys.MyJoinActivity"/>
+        <activity android:name=".my.activitys.MymedalActivity"/>
+        <activity android:name=".my.activitys.MyQiushiActivity"/>
+        <activity android:name=".my.activitys.CommonActivity"/>
+        <activity android:name=".my.activitys.GroupActivity"/>
+        <activity android:name=".my.activitys.RoutineSettingActivity"/>
+        <activity android:name=".my.activitys.ScripManageActivity"/>
+        <activity android:name=".my.activitys.SettingsActivity"/>
     </application>
 
 </manifest>

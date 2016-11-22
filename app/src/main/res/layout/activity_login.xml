@@ -9,5 +9,22 @@
         android:layout_marginTop="10dp"
         android:text="---------------------------- 使用合作账号登录 / 注册 ----------------------------"
         />
-
+    <EditText
+        android:id="@+id/et_userID_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入账号"
+        />
+    <EditText
+        android:id="@+id/et_userPassword_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码。"
+        />
+    <Button
+        android:id="@+id/btn_login_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        />
 </LinearLayout>

@@ -3,10 +3,12 @@ package com.king.smiletime;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 
+import com.king.smiletime.my.MyFragment;
 import com.king.smiletime.scandal.FirstFragment;
 import com.king.smiletime.video.VideoFragment;
 
@@ -46,7 +48,7 @@ public class MainActivity extends FragmentActivity {
                         .replace(R.id.tdfl_id,new VideoFragment()).commit();
                 break;
             case R.id.my_id:
-
+                fragmentManager.beginTransaction().replace(R.id.tdfl_id,new MyFragment()).commit();
                 break;
         }
     }

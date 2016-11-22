@@ -7,6 +7,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    NobarTheme
+    <style name="NobarTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 
     <!--name为声明的"属性集合"名，可以随便取，但是最好是设置为跟我们的View一样的名称-->
     <declare-styleable name="MyView">
