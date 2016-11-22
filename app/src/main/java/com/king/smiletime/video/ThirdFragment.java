@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -37,9 +39,9 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     private String url;
     private ViewPager viewPager;
     private ImageView imageView;
-    private List<String> ds;
     private Person person;
-    private MyPageAdapter adapter;
+    private MyFragmentPagerAdapter adapter;
+    private List<ImageFragment> fragments;
 
 
     @Override
@@ -79,11 +81,11 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
      */
     private void aboutViewPager() {
         //数据源
-        ds = new LinkedList<>();
+        fragments = new LinkedList<>();
         fillData();
 
         //适配器
-        adapter = new MyPageAdapter();
+        adapter = new MyFragmentPagerAdapter(getFragmentManager(), fragments);
         //绑定
         viewPager.setAdapter(adapter);
         //监听器
@@ -100,47 +102,43 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
         Log.i("msg3",result.toString());
         List<Banners> banners = result.getBanners();
         for(Banners banner:banners){
+            ImageFragment fragment = new ImageFragment();
             String url = banner.getUrl();
-            Log.i("msg2",url);
-            ds.add(url);
+            Bundle args = new Bundle();
+            args.putString("url",url);
+            fragment.setArguments(args);
+            fragments.add(fragment);
+            Log.i("msg",fragments.toString());
         }
         adapter.notifyDataSetChanged();
 
 
     }
+    private final  class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
+        private List<ImageFragment> photoFragments;
+        public MyFragmentPagerAdapter(FragmentManager fm,List<ImageFragment> photoFragments) {
+            super(fm);
+            this.photoFragments=photoFragments;
+        }
 
+        @Override
+        public Fragment getItem(int position) {
+            Log.i("size",photoFragments.size()+"");
+            if(photoFragments.size()!=0){
 
-    private final class MyPageAdapter extends PagerAdapter {
+                return photoFragments.get(position%(photoFragments.size()));
+            }
+            return photoFragments.get(position);
+        }
 
         @Override
         public int getCount() {
-            return ds.size();
+            if(photoFragments.size()!=0){
+            return Integer.MAX_VALUE;
+            }
+            return photoFragments.size();
         }
 
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;// true if view is associated with the key object object
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
-            ImageView imageView = new ImageView(getContext());
-            Picasso.with(getContext()).load(ds.get(position)).into(imageView);
-            // 将该数据源添加到ViewPager上
-            container.addView(imageView);
-
-            // 返回当前数据源的实例
-            return imageView;// Returns an Object representing the new page.
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            // 从View Pager中移除指定位置的ImageView，（若View Pager中页面很多，若不移除，内存会溢出）
-            // 但是，不能从数据源中移除，否则，滑动完一遍，不能回滑（从数据源中已经移除了）
-            container.removeView((View) object);
-        }
     }
 
 
