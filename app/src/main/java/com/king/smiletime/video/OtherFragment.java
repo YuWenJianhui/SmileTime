@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,15 +18,13 @@ import com.king.entity.Banners;
 import com.king.entity.Person;
 import com.king.smiletime.R;
 
-
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/17.
  */
 
-public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask.JsonDataSettingCallBack{
+public class OtherFragment extends Fragment implements DownloadJsonDataAysncTask.JsonDataSettingCallBack{
 
     private View view;
     private ListView listView;
@@ -36,9 +32,9 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     private String tabName;
     private String url;
     private ViewPager viewPager;
+    private ImageView imageView;
+    private List<String> ds;
     private Person person;
-    private MyFragmentPagerAdapter adapter;
-    private List<ImageFragment> fragments;
 
 
     @Override
@@ -53,14 +49,11 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_video, null);
-        viewPager = (ViewPager) view.findViewById(R.id.vp_id);
+        view = inflater.inflate(R.layout.fragment_other, null);
         listView = (ListView) view.findViewById(R.id.listView);
         replace = (TextView) view.findViewById(R.id.tv_replace_id);
         listView.setEmptyView(replace);
 
-        //关于ViewPager
-        aboutViewPager();
         //关于ListView
         aboutlistView();
         return view;
@@ -72,20 +65,7 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
 
     }
 
-    /**
-     *
-     */
-    private void aboutViewPager() {
-        //数据源
-        fragments = new LinkedList<>();
-        fillData();
 
-        //适配器
-        adapter = new MyFragmentPagerAdapter(getFragmentManager(), fragments);
-        //绑定
-        viewPager.setAdapter(adapter);
-        //监听器
-    }
 
     private void fillData() {
         //获取json数据
@@ -98,41 +78,11 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
         Log.i("msg3",result.toString());
         List<Banners> banners = result.getBanners();
         for(Banners banner:banners){
-            ImageFragment fragment = new ImageFragment();
             String url = banner.getUrl();
-            Bundle args = new Bundle();
-            args.putString("url",url);
-            fragment.setArguments(args);
-            fragments.add(fragment);
-            Log.i("msg",fragments.toString());
-        }
-        adapter.notifyDataSetChanged();
-
-
-    }
-    private final  class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
-        private List<ImageFragment> photoFragments;
-        public MyFragmentPagerAdapter(FragmentManager fm,List<ImageFragment> photoFragments) {
-            super(fm);
-            this.photoFragments=photoFragments;
+            Log.i("msg2",url);
+            ds.add(url);
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            if(photoFragments.size()!=0){
-
-                return photoFragments.get(position%(photoFragments.size()));
-            }
-            return photoFragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            if(photoFragments.size()!=0){
-            return Integer.MAX_VALUE;
-            }
-            return photoFragments.size();
-        }
 
     }
 

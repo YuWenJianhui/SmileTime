@@ -17,17 +17,20 @@
         android:layout_height="wrap_content"
         />
     </LinearLayout>
-    <ImageButton
-        android:id="@+id/btn_id"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_radio"
-        android:background="#FFBA1E"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vpger_id"
         android:layout_below="@+id/ll_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/btn_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_radio"
+        android:background="#FFBA1E"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
