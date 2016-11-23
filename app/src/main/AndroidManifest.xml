@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.king.smiletime">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:name=".MyApplication"
@@ -42,6 +44,12 @@
         <activity android:name=".my.activitys.RoutineSettingActivity"/>
         <activity android:name=".my.activitys.ScripManageActivity"/>
         <activity android:name=".my.activitys.SettingsActivity"/>
+        <receiver android:name=".my.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
