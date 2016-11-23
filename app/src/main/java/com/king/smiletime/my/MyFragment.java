@@ -11,9 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.king.smiletime.MainActivity;
+import com.king.smiletime.MyApplication;
 import com.king.smiletime.R;
+import com.king.smiletime.my.activitys.CommonActivity;
+import com.king.smiletime.my.activitys.GroupActivity;
 import com.king.smiletime.my.activitys.ManagermentThingActivity;
+import com.king.smiletime.my.activitys.MymedalActivity;
+import com.king.smiletime.my.activitys.NearFriendActivity;
+import com.king.smiletime.my.activitys.SettingsActivity;
 import com.king.smiletime.my.activitys.UserLoginActivity;
 
 import org.xutils.view.annotation.ContentView;
@@ -85,7 +93,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 //    @Event(value = {R.id.rl_login_id,R.id.tv_nearUser_id,R.id.tv_group_id,R.id.tv_merchandise_id,
 //            R.id.tv_chick_id,R.id.rl_qiuBaimanager_id,R.id.rl_myMedal_id,R.id.rl_gameCenter_id,R.id.rl_nightMoon_id,
 //            R.id.rl_select_id})
-//	public void login(View view) {
+//	private void login(View view) {
 //
 //	}
 
@@ -94,38 +102,123 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 		switch (view.getId()) {
 			case R.id.rl_login_id:
 				//点击登录
-				intent = new Intent(getContext(), UserLoginActivity.class);
-				startActivity(intent);
+				toOnpenUserLoginActivity();
 				break;
 			case R.id.tv_nearUser_id:
-				//点击打开附近的糗友的Activity
+				toOnpenNearUserActivity();
 				break;
 			case R.id.tv_group_id:
 				//点击打开群的Activity
+				toOnpenGroupActivity();
 				break;
 			case R.id.tv_merchandise_id:
 				//点击打开糗百货
+				toOnpenCommonActivity("http://www.wemart.cn/mobile/?chanId=&shelfNo=9203&sellerId=3646&a=shelf&m=index&appId=3045712&user_id=IMEI_2cdcd77f301481529c79a67f53ed7604&c=19");
 				break;
 			case R.id.tv_chick_id:
 				//点击打小鸡
+				toOnpenCommonActivity("http://www.qiushibaike.com/topic?uuid=IMEI_2cdcd77f301481529c79a67f53ed7604");
 				break;
 			case R.id.rl_qiuBaimanager_id:
 				//点击打开管理糗事和动态Activity
-				intent = new Intent(getActivity(), ManagermentThingActivity.class);
-				startActivity(intent);
+				toOnpenManagermentThingActivity();
 				break;
 			case R.id.rl_myMedal_id:
 				//点击打开我的勋章Activity
+				toOnpenMymedalActivity();
 				break;
 			case R.id.rl_gameCenter_id:
 				//点击打开游戏中心Activity
+				toOnpenCommonActivity("http://api.qiushibaike.com/verify/code?url=http://gc.hgame.com/app/qsbk/transfer/gameid/pt/373?from=qbandroid");
 				break;
 			case R.id.rl_nightMoon_id:
 				//点击设置成夜间模式再次点击设置成白天模式
+				settingShowPattern();
 				break;
 			case R.id.rl_select_id:
-				//点击打开游戏中心Activity
+				//点击设置Activity
+				toOnpenSettingsActivity();
 				break;
+		}
+	}
+
+	/**
+	 * 点击设置Activity
+	 */
+	private void toOnpenSettingsActivity() {
+		intent = new Intent(getContext(), SettingsActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 点击设置成夜间模式再次点击设置成白天模式
+	 */
+	private void settingShowPattern() {
+		getActivity().getApplication().setTheme(R.style.NightTHeme);
+	}
+
+	/**
+	 * 点击打开我的勋章Activity
+	 */
+	private void toOnpenMymedalActivity() {
+		intent = new Intent(getActivity(), MymedalActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 点击打开管理糗事和动态Activity
+	 */
+	private void toOnpenManagermentThingActivity() {
+		intent = new Intent(getActivity(), ManagermentThingActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 根据参数传过来的不同的url分别打开糗百货或者小鸡或者游戏中心
+	 * @param url
+	 */
+	private void toOnpenCommonActivity(String url) {
+		intent = new Intent(getContext(), CommonActivity.class);
+		intent.putExtra("url",url);
+		startActivity(intent);
+	}
+
+	/**
+	 * 点击打开群的Activity
+	 */
+	private void toOnpenGroupActivity() {
+		intent = new Intent(getContext(), GroupActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 点击登录
+	 */
+	private void toOnpenUserLoginActivity() {
+		intent = new Intent(getContext(), UserLoginActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 点击打开附近的糗友的Activity
+	 */
+	private void toOnpenNearUserActivity() {
+		//点击打开附近的糗友的Activity
+		//1、首先判断是否登录
+		if (MyApplication.isLogin()){
+			// 如果没有登录就跳转到登录界面
+			toOnpenUserLoginActivity();
+		}else {
+			//2、如果登录再判断是否有网络，如果没有网络弹出吐司 网络连接失败，请检查网络设置
+			if (MyApplication.getNetType() == MyApplication.NOINTNET){
+				Toast.makeText(getContext(),"没有网络，请检查网络设置",Toast.LENGTH_LONG).show();
+			}else {
+				//3、如果有网络异步任务加载附近的糗友到ListView列表中加载完成之前ListView中显示的一个ProgressDialog
+				//如果加载完成了就隐藏ProgressDialog显示ListView
+				intent = new Intent(getContext(), NearFriendActivity.class);
+				startActivity(intent);
+			}
+
 		}
 	}
 }

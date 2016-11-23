@@ -11,15 +11,6 @@
         <item>纯文</item>
         <item>纯图</item>
         <item>精华</item>
-        <item>穿越</item>
-    </string-array>
-    <string-array name="url">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
     </string-array>
     <string-array name="tabNames3">
         <item>全部</item>

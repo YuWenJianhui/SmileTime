@@ -15,8 +15,11 @@ import org.xutils.x;
  * Created by Administrator on 2016/11/21.
  */
 
-@ContentView(value = R.layout.activity_usereditor)
+@ContentView(value = R.layout.activity_userinformationparticulars)
 public class UserInformationParticularsActivity extends Activity {
+
+	private Intent purposeIntent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class UserInformationParticularsActivity extends Activity {
 				break;
 			case R.id.iv_editor_id:
 				//点击进入编辑
+				purposeIntent = new Intent(this,UserEditorActivity.class);
+				startActivity(purposeIntent);
 				break;
 			case R.id.iv_user_id:
 				//点击放大图片
