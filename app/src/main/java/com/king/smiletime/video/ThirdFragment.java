@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import com.king.asynctask.DownloadJsonDataAysncTask;
 import com.king.entity.Banners;
 import com.king.entity.Person;
 import com.king.smiletime.R;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.LinkedList;
@@ -38,7 +36,6 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     private String tabName;
     private String url;
     private ViewPager viewPager;
-    private ImageView imageView;
     private Person person;
     private MyFragmentPagerAdapter adapter;
     private List<ImageFragment> fragments;
@@ -58,7 +55,6 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_video, null);
         viewPager = (ViewPager) view.findViewById(R.id.vp_id);
-        imageView = (ImageView) view.findViewById(R.id.image);
         listView = (ListView) view.findViewById(R.id.listView);
         replace = (TextView) view.findViewById(R.id.tv_replace_id);
         listView.setEmptyView(replace);
@@ -123,7 +119,6 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
 
         @Override
         public Fragment getItem(int position) {
-            Log.i("size",photoFragments.size()+"");
             if(photoFragments.size()!=0){
 
                 return photoFragments.get(position%(photoFragments.size()));
