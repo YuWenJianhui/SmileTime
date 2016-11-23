@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.king.smiletime.R;
-import com.king.smiletime.my.activitys.ManagermentThingActivity;
+
 import com.king.smiletime.my.activitys.UserLoginActivity;
 
 import org.xutils.view.annotation.ContentView;
@@ -111,7 +111,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 				break;
 			case R.id.rl_qiuBaimanager_id:
 				//点击打开管理糗事和动态Activity
-				intent = new Intent(getActivity(), ManagermentThingActivity.class);
+				//intent = new Intent(getActivity(), ManagermentThingActivity.class);
 				startActivity(intent);
 				break;
 			case R.id.rl_myMedal_id:

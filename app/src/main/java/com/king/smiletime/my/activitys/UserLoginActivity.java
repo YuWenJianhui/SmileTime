@@ -25,7 +25,7 @@ public class UserLoginActivity extends Activity {
 
 	@Event(value = R.id.btn_login_id)
 	private void login(View view){
-		Intent intent = new Intent(this,UserInformationParticularsActivity.class);
-		startActivity(intent);
+		//Intent intent = new Intent(this,UserInformationParticularsActivity.class);
+		//startActivity(intent);
 	}
 }

@@ -27,6 +27,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.lang.reflect.Field;
 import java.security.PrivateKey;
 import java.util.zip.Inflater;
 
@@ -38,15 +39,12 @@ public class JokesFragment extends Fragment {
 
 
     private ListView mLv;
-    private ScrollView mSl;
-    private JokesEntity entity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.jokesfragment, null);
         mLv = (ListView) view.findViewById(R.id.jokeslv_id);
-
         TextView mTv = (TextView) view.findViewById(R.id.jokestv_id);
         mLv.setEmptyView(mTv);
         Bundle bundle = getArguments();
@@ -79,7 +77,8 @@ public class JokesFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
-            entity = JSON.parseObject(s, JokesEntity.class);
+            Log.i("json", s.toString());
+            JokesEntity entity = JSON.parseObject(s, JokesEntity.class);
             aboutlistview(entity);
         }
     }
@@ -113,6 +112,7 @@ public class JokesFragment extends Fragment {
 
         @Override
         public int getItemViewType(int position) {
+
             if (joke.getItems().get(position).getFormat().equals("word")) {
                 return TYPE_TEXT;
             } else if (joke.getItems().get(position).getFormat().equals("image")) {
@@ -191,11 +191,11 @@ public class JokesFragment extends Fragment {
             else {
 
                 switch (type) {
-                    case TYPE_IMG:
-                        holderimg = (ViewHolderimg) convertView.getTag();
-                        break;
                     case TYPE_TEXT:
                         holdertext = (ViewHoldertext) convertView.getTag();
+                        break;
+                    case TYPE_IMG:
+                        holderimg = (ViewHolderimg) convertView.getTag();
                         break;
                     case TYPE_VIDO:
                         holdervido = (ViewHolderVido) convertView.getTag();
@@ -210,15 +210,24 @@ public class JokesFragment extends Fragment {
             switch (type) {
 
                 case TYPE_TEXT:
-                    itemsBean = joke.getItems().get(position);
-                    String s = itemsBean.getUser().getUid()+"";
-                    String s1 = s.substring(0, s.length() - 4) + "/";
-                    StringBuffer textbf = new StringBuffer();
-                    textbf.append("http://pic.qiushibaike.com/system/avtnew/").append(s1);
-                    textbf.append(s+"/").append("thumb/").append(itemsBean.getUser().getIcon());
 
-                    Picasso.with(getContext()).load(textbf.toString()).into(holdertext.headimg);
-                    holdertext.username.setText(itemsBean.getUser().getLogin());
+                    itemsBean = joke.getItems().get(position);
+                    if (itemsBean.getUser() == null || "".equals(itemsBean.getUser())) {
+                        holdertext.headimg.setImageResource(resources.getIdentifier("default_users_avatar", "mipmap", getContext().getPackageName()));
+                        holdertext.username.setText("匿名用户");
+                    } else {
+                        Log.i("cuoma", "我好慌" + position);
+                        String s = itemsBean.getUser().getUid() + "";
+                        Log.i("cuo", s);
+                        String s1 = s.substring(0, s.length() - 4) + "/";
+                        StringBuffer textbf = new StringBuffer();
+                        textbf.append("http://pic.qiushibaike.com/system/avtnew/").append(s1);
+                        textbf.append(s + "/").append("thumb/").append(itemsBean.getUser().getIcon());
+
+                        Picasso.with(getContext()).load(textbf.toString()).into(holdertext.headimg);
+
+                        holdertext.username.setText(itemsBean.getUser().getLogin());
+                    }
                     String jokeType = itemsBean.getType();
 
                     if ("hot".equals(jokeType)) {
@@ -237,13 +246,20 @@ public class JokesFragment extends Fragment {
                     break;
                 case TYPE_IMG:
                     itemsBean = joke.getItems().get(position);
-                    String imgtext = itemsBean.getUser().getUid() + "";
-                    String imgtext1 = imgtext.substring(0, imgtext.length() - 4);
-                    StringBuffer imgbftitile = new StringBuffer();
-                    imgbftitile.append("http://pic.qiushibaike.com/system/avtnew/").append(imgtext1);
-                    imgbftitile.append("/" + imgtext).append("/medium/").append(itemsBean.getUser().getIcon());
-                    Picasso.with(getContext()).load(imgbftitile.toString()).into(holderimg.headimg);
-                    holderimg.username.setText(itemsBean.getUser().getLogin());
+                    if (itemsBean.getUser() == null || "".equals(itemsBean.getUser())) {
+                        holderimg.headimg.setImageResource(resources.getIdentifier("default_users_avatar", "mipmap", getContext().getPackageName()));
+                        holderimg.username.setText("匿名用户");
+                    } else {
+                        Log.i("cuoma", "我好慌" + position);
+                        String imgtext = itemsBean.getUser().getUid() + "";
+                        Log.i("cuo", imgtext);
+                        String imgtext1 = imgtext.substring(0, imgtext.length() - 4);
+                        StringBuffer imgbftitile = new StringBuffer();
+                        imgbftitile.append("http://pic.qiushibaike.com/system/avtnew/").append(imgtext1);
+                        imgbftitile.append("/" + imgtext).append("/medium/").append(itemsBean.getUser().getIcon());
+                        Picasso.with(getContext()).load(imgbftitile.toString()).into(holderimg.headimg);
+                        holderimg.username.setText(itemsBean.getUser().getLogin());
+                    }
                     String jokeimgType = itemsBean.getType();
                     if ("hot".equals(jokeimgType)) {
                         holderimg.typeimg.setImageResource(resources.getIdentifier("fire", "mipmap", getActivity().getPackageName()));
@@ -255,13 +271,12 @@ public class JokesFragment extends Fragment {
 
                     }
                     holderimg.itemtext.setText(itemsBean.getContent());
-                    String img = itemsBean.getId()+"";
+                    String img = itemsBean.getId() + "";
 
                     String img1 = img.substring(0, img.length() - 4) + "/";
                     StringBuffer imgbf = new StringBuffer();
                     imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                    imgbf.append(img+"/").append("medium/").append(itemsBean.getImage());
-
+                    imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
 
 
                     Picasso.with(getContext()).load(imgbf.toString()).into(holderimg.itemimg);
