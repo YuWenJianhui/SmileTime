@@ -11,8 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.king.smiletime.MainActivity;
+import com.king.smiletime.MyApplication;
 import com.king.smiletime.R;
+import com.king.smiletime.my.activitys.CommonActivity;
+import com.king.smiletime.my.activitys.GroupActivity;
+import com.king.smiletime.my.activitys.ManagermentThingActivity;
+import com.king.smiletime.my.activitys.MymedalActivity;
+import com.king.smiletime.my.activitys.NearFriendActivity;
+import com.king.smiletime.my.activitys.SettingsActivity;
 
 import com.king.smiletime.my.activitys.UserLoginActivity;
 
@@ -111,7 +120,7 @@ public class MyFragment extends Fragment implements View.OnClickListener{
 				break;
 			case R.id.rl_qiuBaimanager_id:
 				//点击打开管理糗事和动态Activity
-				//intent = new Intent(getActivity(), ManagermentThingActivity.class);
+				intent = new Intent(getActivity(), ManagermentThingActivity.class);
 				startActivity(intent);
 				break;
 			case R.id.rl_myMedal_id:
