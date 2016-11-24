@@ -65,8 +65,8 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_video, null);
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        //viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+       // recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         dialog = new ProgressDialog(getContext());
         gridLayout = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayout);

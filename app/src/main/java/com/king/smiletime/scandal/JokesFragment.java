@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceView;
@@ -18,6 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.king.entity.JokesEntity;
 import com.king.smiletime.R;
 import com.king.utils.HttpUtils;
@@ -33,23 +37,66 @@ public class JokesFragment extends Fragment {
 
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
-    private ListView mLv;
+    private PullToRefreshListView mLv;
+    private Myadapter adapter;
+    private String url;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.jokesfragment, null);
-        mLv = (ListView) view.findViewById(R.id.jokeslv_id);
+        mLv = (PullToRefreshListView) view.findViewById(R.id.jokeslv_id);
+
         TextView mTv = (TextView) view.findViewById(R.id.jokestv_id);
         mLv.setEmptyView(mTv);
 
         Bundle bundle = getArguments();
         String tabName = bundle.getString("tabName");
-        String url = bundle.getString("url");
+        url = bundle.getString("url");
+
         new MyAsynctask().execute(url);
 
+        mLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                String label = DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
+                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
 
+                // Update the LastUpdatedLabel
+                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+                // Do work to refresh the list here.
+                new GetDataTask().execute(url);
+            }
+        });
         return view;
+    }
+
+    private class GetDataTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            // Simulates a background job.
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+            }
+            return HttpUtils.getJsonData(params[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            JokesEntity entity = JSON.parseObject(result, JokesEntity.class);
+            aboutlistview(entity);
+
+
+            // Call onRefreshComplete when the list has been refreshed.
+
+
+            super.onPostExecute(result);
+        }
     }
 
 
@@ -60,9 +107,16 @@ public class JokesFragment extends Fragment {
         // View view1 = View.inflate(getContext(), R.layout.jokesfristitem, null);
         //mLv.addHeaderView(view1);
 
+        mLv.onRefreshComplete();
         //适配器
-        Myadapter adapter = new Myadapter(jokeentity);
+        adapter = new Myadapter(jokeentity);
+        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener(getContext());
+        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
+        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
+        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
+        mLv.setOnPullEventListener(soundListener);
         //绑定适配器
+        adapter.notifyDataSetChanged();
         mLv.setAdapter(adapter);
     }
 
@@ -76,8 +130,10 @@ public class JokesFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
+
             JokesEntity entity = JSON.parseObject(s, JokesEntity.class);
             aboutlistview(entity);
+
         }
     }
 
