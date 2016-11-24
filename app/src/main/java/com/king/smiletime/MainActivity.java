@@ -11,7 +11,7 @@ import android.view.Window;
 
 import com.king.smiletime.my.MyFragment;
 import com.king.smiletime.scandal.FirstFragment;
-//import com.king.smiletime.video.VideoFragment;
+import com.king.smiletime.video.VideoFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -39,16 +39,15 @@ public class MainActivity extends FragmentActivity {
     public void BtnAction(View view) {
         switch (view.getId()) {
             case R.id.scandal_id:
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.tdfl_id, new FirstFragment());
-                transaction.commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.tdfl_id, new FirstFragment()).commit();
                 break;
             case R.id.friend_id:
 
                 break;
             case R.id.video_id:
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.tdfl_id,new VideoFragment()).commit();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.tdfl_id,new VideoFragment()).commit();
                 break;
             case R.id.my_id:
                 fragmentManager.beginTransaction().replace(R.id.tdfl_id,new MyFragment()).commit();

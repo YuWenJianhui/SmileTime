@@ -16,8 +16,5 @@
         <item>全部</item>
         <item>已粉</item>
     </string-array>
-    <string-array name="liveurl">
-        <item>http://live.qiushibaike.com/live/all/list</item>
-        <item></item>
-    </string-array>
+
 </resources>

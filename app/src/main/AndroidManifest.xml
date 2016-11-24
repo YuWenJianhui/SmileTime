@@ -44,6 +44,7 @@
         <activity android:name=".my.activitys.RoutineSettingActivity"/>
         <activity android:name=".my.activitys.ScripManageActivity"/>
         <activity android:name=".my.activitys.SettingsActivity"/>
+        <activity android:name=".WebActivity"/>
         <receiver android:name=".my.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
