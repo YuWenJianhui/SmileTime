@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/jokesitemvideollhead_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/jokesitmevideoheadimg_id"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideouesrname_id"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/jokesitemvideotypeimg_id"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/jokesitemvideotypetext_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/jokesitemvideotext_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jokesitemingllhead_id"
+        android:layout_margin="10dp" />
+
+    <FrameLayout
+        android:id="@+id/jokesitemvideoframe_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/jokesitemvideotext_id"
+        android:layout_weight="1">
+
+        <SurfaceView
+            android:id="@+id/jokesitemvideo_id"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:id="@+id/jokesitemvideoimg_id"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/jokesitemvideosmile_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="好笑"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideosmilenumb_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideocomment_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="评论"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideocommentnumb_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideoshare_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="分享"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/jokesitemvideosharenumb_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/jokesitemvideollbottm_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/jokesitemvideosmileimg_id"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"
+                android:onClick="imgaction"
+                android:src="@drawable/smilesector" />
+
+            <ImageView
+                android:id="@+id/jokesitemvideosadimg_id"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="40dp"
+                android:clickable="true"
+                android:onClick="imgaction"
+                android:src="@drawable/sadsector" />
+
+            <ImageView
+                android:id="@+id/jokesitemvideocommentimg_id"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="40dp"
+                android:src="@mipmap/comment" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/jokesitemvideoshareimg_id"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:onClick="imgaction"
+                android:src="@mipmap/share" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

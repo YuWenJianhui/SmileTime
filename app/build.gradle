@@ -37,4 +37,5 @@ dependencies {
     compile 'org.xutils:xutils:3.3.38'
     compile files('libs/fastjson-1.1.40.jar')
     compile files('libs/gson-2.1.jar')
+    compile files('libs/list-visibility-utils.jar')
 }
