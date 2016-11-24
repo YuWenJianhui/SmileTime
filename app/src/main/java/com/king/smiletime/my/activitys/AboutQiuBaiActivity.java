@@ -19,5 +19,6 @@ public class AboutQiuBaiActivity extends AppCompatActivity {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		x.view().inject(this);
+
 	}
 }
