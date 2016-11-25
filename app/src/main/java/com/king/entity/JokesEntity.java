@@ -90,6 +90,9 @@ public class JokesEntity implements Serializable {
         private String pic_url;
         private String content;
         private String state;
+
+
+
         private int comments_count;
         private String low_url;
         private boolean allow_comment;

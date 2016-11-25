@@ -29,7 +29,7 @@ public class VideoFragment extends Fragment {
     private String[] tabNames;
     private List<Fragment> fragments;
     private MyFragmentPagerAdapter adapter;
-    private String[] urls;
+    private String url;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class VideoFragment extends Fragment {
         tabLayout =  (TabLayout) view.findViewById(R.id.tab_id);
         viewPager = (ViewPager) view.findViewById(R.id.vpger_id);
         tabNames = getResources().getStringArray(R.array.tabNames3);
-        urls=new String[]{"http://live.qiushibaike.com/live/all/list?count=30&page=1&rqcnt=19","http://live.qiushibaike.com/live/all/list?count=30&page=2&rqcnt=20"};
+        url="http://live.qiushibaike.com/live/all/list?count=30&page=;&rqcnt=;";
 
     }
 
@@ -71,8 +71,7 @@ public class VideoFragment extends Fragment {
                 ThirdFragment fragment = new ThirdFragment();
                 Bundle args = new Bundle();
                 args.putString("tabName",tabName);
-                args.putString("url1",urls[0]);
-                args.putString("url2",urls[1]);
+                args.putString("url1",url);
                 fragment.setArguments(args);
                 fragments.add(fragment);
 
