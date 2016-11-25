@@ -28,6 +28,11 @@ import com.king.utils.HttpUtils;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -40,6 +45,8 @@ public class JokesFragment extends Fragment {
     private PullToRefreshListView mLv;
     private Myadapter adapter;
     private String url;
+    private List<JokesEntity.ItemsBean> items;
+    private HashSet<JokesEntity.ItemsBean> hs;
 
 
     @Nullable
@@ -47,14 +54,11 @@ public class JokesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.jokesfragment, null);
         mLv = (PullToRefreshListView) view.findViewById(R.id.jokeslv_id);
-
         TextView mTv = (TextView) view.findViewById(R.id.jokestv_id);
         mLv.setEmptyView(mTv);
-
         Bundle bundle = getArguments();
-        String tabName = bundle.getString("tabName");
         url = bundle.getString("url");
-
+        hs = new LinkedHashSet<>();
         new MyAsynctask().execute(url);
 
         mLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
@@ -78,10 +82,7 @@ public class JokesFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             // Simulates a background job.
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-            }
+
             return HttpUtils.getJsonData(params[0]);
 
         }
@@ -89,7 +90,14 @@ public class JokesFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             JokesEntity entity = JSON.parseObject(result, JokesEntity.class);
-            aboutlistview(entity);
+            List<JokesEntity.ItemsBean> additems = entity.getItems();
+            hs.clear();
+            hs.addAll(items);
+            hs.addAll(additems);
+            items.clear();
+            items.addAll(hs);
+            adapter.notifyDataSetChanged();
+            aboutlistview(items);
 
 
             // Call onRefreshComplete when the list has been refreshed.
@@ -100,7 +108,7 @@ public class JokesFragment extends Fragment {
     }
 
 
-    private void aboutlistview(JokesEntity jokeentity) {
+    private void aboutlistview(List<JokesEntity.ItemsBean> list) {
         //数据源
 
         //添加头部布局
@@ -109,14 +117,14 @@ public class JokesFragment extends Fragment {
 
         mLv.onRefreshComplete();
         //适配器
-        adapter = new Myadapter(jokeentity);
+        adapter = new Myadapter(list);
         SoundPullEventListener<ListView> soundListener = new SoundPullEventListener(getContext());
         soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
         soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
         soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
         mLv.setOnPullEventListener(soundListener);
         //绑定适配器
-        adapter.notifyDataSetChanged();
+
         mLv.setAdapter(adapter);
     }
 
@@ -132,7 +140,8 @@ public class JokesFragment extends Fragment {
         protected void onPostExecute(String s) {
 
             JokesEntity entity = JSON.parseObject(s, JokesEntity.class);
-            aboutlistview(entity);
+            items = entity.getItems();
+            aboutlistview(items);
 
         }
     }
@@ -142,11 +151,11 @@ public class JokesFragment extends Fragment {
         private final int TYPE_IMG = 1;// 都包含TextView，ImageView的布局类型
         private final int TYPE_VIDO = 2;
         private int curPosition = -1;
-        private JokesEntity joke;
+        private List<JokesEntity.ItemsBean> items;
 
 
-        public Myadapter(JokesEntity joke) {
-            this.joke = joke;
+        public Myadapter(List<JokesEntity.ItemsBean> items) {
+            this.items = items;
         }
 
         public Myadapter() {
@@ -154,7 +163,7 @@ public class JokesFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return joke.getItems().size();
+            return items.size();
         }
 
         @Override
@@ -168,11 +177,11 @@ public class JokesFragment extends Fragment {
         @Override
         public int getItemViewType(int position) {
 
-            if (joke.getItems().get(position).getFormat().equals("word")) {
+            if (items.get(position).getFormat().equals("word")) {
                 return TYPE_TEXT;
-            } else if (joke.getItems().get(position).getFormat().equals("image")) {
+            } else if (items.get(position).getFormat().equals("image")) {
                 return TYPE_IMG;
-            } else if (joke.getItems().get(position).getFormat().equals("video")) {
+            } else if (items.get(position).getFormat().equals("video")) {
                 return TYPE_VIDO;
             }
             return 0;
@@ -271,7 +280,7 @@ public class JokesFragment extends Fragment {
 
                 case TYPE_TEXT:
 
-                    itemsBean = joke.getItems().get(position);
+                    itemsBean = items.get(position);
                     if (itemsBean.getUser() == null || "".equals(itemsBean.getUser())) {
                         holdertext.headimg.setImageResource(resources.getIdentifier("default_users_avatar", "mipmap", getContext().getPackageName()));
                         holdertext.username.setText("匿名用户");
@@ -303,7 +312,7 @@ public class JokesFragment extends Fragment {
                     holdertext.itemsharenumb.setText(itemsBean.getShare_count() + "");
                     break;
                 case TYPE_IMG:
-                    itemsBean = joke.getItems().get(position);
+                    itemsBean = items.get(position);
                     if (itemsBean.getUser() == null || "".equals(itemsBean.getUser())) {
                         holderimg.headimg.setImageResource(resources.getIdentifier("default_users_avatar", "mipmap", getContext().getPackageName()));
                         holderimg.username.setText("匿名用户");
@@ -338,7 +347,7 @@ public class JokesFragment extends Fragment {
                     holderimg.itemsharenumb.setText(itemsBean.getShare_count() + "");
                     break;
                 case TYPE_VIDO:
-                    itemsBean = joke.getItems().get(position);
+                    itemsBean = items.get(position);
                     if (itemsBean.getUser() == null || "".equals(itemsBean.getUser())) {
                         holdervido.headimg.setImageResource(resources.getIdentifier("default_users_avatar", "mipmap", getContext().getPackageName()));
                         holdervido.username.setText("匿名用户");
