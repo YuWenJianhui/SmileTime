@@ -98,6 +98,22 @@ public class JokesEntity {
         private HotCommentBean hot_comment;
         private List<Integer> pic_size;
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ItemsBean itemsBean = (ItemsBean) o;
+
+            return content != null ? content.equals(itemsBean.content) : itemsBean.content == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return content != null ? content.hashCode() : 0;
+        }
+
         public String getHigh_url() {
             return high_url;
         }
