@@ -19,12 +19,21 @@ public class Lives {
         private String content;
         private String thumbnail_url;
         private long room_id;
+        private String rtmp_live_url;
         private String location;
         private String hdl_live_url;
         private int visitors_count;
         private long id;
 
-        public int getStatus() {
+    public String getRtmp_live_url() {
+        return rtmp_live_url;
+    }
+
+    public void setRtmp_live_url(String rtmp_live_url) {
+        this.rtmp_live_url = rtmp_live_url;
+    }
+
+    public int getStatus() {
             return status;
         }
 
