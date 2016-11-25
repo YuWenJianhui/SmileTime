@@ -10,20 +10,29 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.king.asynctask.DownloadJsonDataAysncTask;
 import com.king.entity.Banners;
 import com.king.entity.Lives;
 import com.king.entity.Person;
 import com.king.smiletime.R;
+import com.king.smiletime.scandal.JokesFragment;
 import com.squareup.picasso.Picasso;
 
 
@@ -37,7 +46,8 @@ import java.util.List;
 public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask.JsonDataSettingCallBack{
 
     private View view;
-    private String url;
+    private String url1;
+    private String url2;
     private ViewPager viewPager;
     private Person person;
     private MyFragmentPagerAdapter adapter;
@@ -48,14 +58,17 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     private MyAdapter recyclerViewAdapter;
     private RecyclerView.LayoutManager gridLayout;
     private Handler handler;
+    private boolean flg;// true：当前页的数据加载完毕；false：没有还在完毕
 
     private int index;
+    private PullToRefreshScrollView pullToRefresh;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        url =   bundle.getString("url");
+        url1 =   bundle.getString("url1");
+        url2 =   bundle.getString("url2");
         super.onCreate(savedInstanceState);
     }
 
@@ -65,20 +78,62 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_video, null);
-        //viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-       // recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        dialog = new ProgressDialog(getContext());
-        gridLayout = new GridLayoutManager(getActivity(),2);
-        recyclerView.setLayoutManager(gridLayout);
-
+        //界面的实例的获取
+        initViews();
         //关于ViewPager
         aboutViewPager();
-
+        //广告页循环播放
         circleShowPic();
         //关于RecyclerView
         aboutRecyclerView();
+        //关于PullToRefreshListView控件的操作
+        aboutPullToRefreshScrollView();
         return view;
     }
+
+    //界面实例的获取
+    private void initViews() {
+        pullToRefresh = (PullToRefreshScrollView) view.findViewById(R.id.pullToRefresh);
+        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        dialog = new ProgressDialog(getContext());
+        gridLayout = new GridLayoutManager(getActivity(),2);
+        recyclerView.setLayoutManager(gridLayout);
+    }
+
+    /**
+     * 关于PullToRefreshListView控件的操作
+     */
+    private void aboutPullToRefreshScrollView() {
+        //添加监听器
+        pullToRefresh.setOnRefreshListener(new MyOnRefreshListener());
+
+    }
+    //自定义OnRefreshListener的实现类
+    private final class MyOnRefreshListener implements PullToRefreshBase.OnRefreshListener,DownloadJsonDataAysncTask.JsonDataSettingCallBack{
+
+
+        @Override
+        public void onRefresh(PullToRefreshBase refreshView) {
+            String label = DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+            // Update the LastUpdatedLabel
+            refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+            // Do work to refresh the list here.
+            new DownloadJsonDataAysncTask(this).execute(url2);
+
+        }
+
+
+        @Override
+        public void setJsonData(Person result) {
+            pullToRefresh.setMode(PullToRefreshBase.Mode.DISABLED);
+            fillRecyclerData(result);
+        }
+    }
+
 
     /**
      *关于ViewPager的操作
@@ -95,15 +150,18 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
     }
 
     private void fillData() {
+        dialog.setMessage("正在加载中。。。");
+        dialog.show();
         //获取json数据
-        new DownloadJsonDataAysncTask(this,dialog).execute(url);
+        new DownloadJsonDataAysncTask(this).execute(url1);
 
     }
 
     @Override
     public void setJsonData(Person result) {
-            List<Banners> banners = result.getBanners();
-
+        dialog.dismiss();
+        //填充ViewPager的数据源
+        List<Banners> banners = result.getBanners();
         for(int i=0;i<banners.size();i++){
             ImageFragment fragment = new ImageFragment();
             String url = banners.get(i).getUrl();
@@ -116,15 +174,18 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
         }
              Log.i("fragments",fragments.size()+"");
             adapter.notifyDataSetChanged();
+        //填充recyclerView的数据源
+            fillRecyclerData(result);
 
-            List<Lives> lives = result.getLives();
-            for(Lives live:lives){
-                ds.add(live);
-
-            }
-            Log.i("ds",ds.size()+"");
-            recyclerViewAdapter.notifyDataSetChanged();
-
+    }
+    //填充recyclerView的数据源
+    public void fillRecyclerData(Person result){
+        List<Lives> lives = result.getLives();
+        for(Lives live:lives){
+            ds.add(live);
+        }
+        Log.i("ds",ds.size()+"");
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -145,7 +206,9 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
 
         @Override
         public int getCount() {
+            Log.i("size",fragments.size()+"");
             return fragments.size();
+            //return Integer.MAX_VALUE;
         }
     }
     /**
@@ -191,6 +254,7 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
+    //自定义recyclerView的适配器
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
 
@@ -202,16 +266,9 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    WebFragment webFragment = new WebFragment();
-//                    Bundle args = new Bundle();
-//                    args.putString("url","http://www.app-remix.com/share/live/52248810123966188");
-//                    webFragment.setArguments(args);
-//                    getFragmentManager().beginTransaction().replace(R.id.tdfl_id,webFragment).addToBackStack(null).commit();
 
                 }
             });
-
-
             return new MyViewHolder(itemView);
         }
 
@@ -231,6 +288,7 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
             Picasso.with(getContext()).load(lives.getAuthor().getHeadurl()).into(holder.getImage());
 
         }
+
 
 
         class MyViewHolder extends RecyclerView.ViewHolder{
@@ -272,5 +330,4 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
 
         }
     }
-
 }

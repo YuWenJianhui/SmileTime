@@ -59,29 +59,15 @@ public class OtherFragment extends Fragment implements DownloadJsonDataAysncTask
         return view;
     }
 
-    private void getData() {
-        ProgressDialog dialog = new ProgressDialog(getContext());
-       new DownloadJsonDataAysncTask(this,dialog).execute(url);
-
-    }
 
 
 
     private void fillData() {
-        //获取json数据
-        getData();
 
     }
 
     @Override
     public void setJsonData(Person result) {
-        Log.i("msg3",result.toString());
-        List<Banners> banners = result.getBanners();
-        for(Banners banner:banners){
-            String url = banner.getUrl();
-            Log.i("msg2",url);
-            ds.add(url);
-        }
 
 
     }

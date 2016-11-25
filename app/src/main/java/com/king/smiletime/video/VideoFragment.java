@@ -29,7 +29,6 @@ public class VideoFragment extends Fragment {
     private String[] tabNames;
     private List<Fragment> fragments;
     private MyFragmentPagerAdapter adapter;
-    private List<String> mTblist;
     private String[] urls;
 
     @Override
@@ -57,8 +56,7 @@ public class VideoFragment extends Fragment {
         tabLayout =  (TabLayout) view.findViewById(R.id.tab_id);
         viewPager = (ViewPager) view.findViewById(R.id.vpger_id);
         tabNames = getResources().getStringArray(R.array.tabNames3);
-        urls = getResources().getStringArray(R.array.liveurl);
-
+        urls=new String[]{"http://live.qiushibaike.com/live/all/list?count=30&page=1&rqcnt=19","http://live.qiushibaike.com/live/all/list?count=30&page=2&rqcnt=20"};
 
     }
 
@@ -73,7 +71,8 @@ public class VideoFragment extends Fragment {
                 ThirdFragment fragment = new ThirdFragment();
                 Bundle args = new Bundle();
                 args.putString("tabName",tabName);
-                args.putString("url",urls[0]);
+                args.putString("url1",urls[0]);
+                args.putString("url2",urls[1]);
                 fragment.setArguments(args);
                 fragments.add(fragment);
 
@@ -81,7 +80,7 @@ public class VideoFragment extends Fragment {
                 OtherFragment fragment =new OtherFragment();
                 Bundle args = new Bundle();
                 args.putString("tabName",tabName);
-                args.putString("url",urls[1]);
+                args.putString("url","");
                 fragment.setArguments(args);
                 fragments.add(fragment);
 
