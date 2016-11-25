@@ -166,6 +166,7 @@
                 android:layout_gravity="end"
                 android:clickable="true"
                 android:onClick="imgaction"
+                android:saveEnabled="false"
                 android:src="@mipmap/share" />
         </LinearLayout>
     </LinearLayout>

@@ -79,7 +79,7 @@ public class FirstFragment extends Fragment {
             mTblist.add(tbname[i]);
             i++;
         }
-        urls=new String[]{"http://m2.qiushibaike.com/article/list/suggest?page=1&type=refresh&count=30","http://m2.qiushibaike.com/article/list/video?page=1&count=30&readarticles=[117983310]&rqcnt=449&r=e4bf6ffb1479388427420","http://m2.qiushibaike.com/article/list/text?page=1&count=30&rqcnt=453&r=e4bf6ffb1479388539622","http://m2.qiushibaike.com/article/list/imgrank?page=1&count=30&readarticles=[117994522]&rqcnt=455&r=e4bf6ffb1479388610808","http://m2.qiushibaike.com/article/list/day?page=1&count=30&readarticles=[117996617]&rqcnt=458&r=e4bf6ffb1479388663888"};
+        urls=new String[]{"http://m2.qiushibaike.com/article/list/suggest?page=1&type=refresh&count=30","http://m2.qiushibaike.com/article/list/video?page=1&count=30","http://m2.qiushibaike.com/article/list/text?page=1&count=30","http://m2.qiushibaike.com/article/list/imgrank?page=1&count=30","http://m2.qiushibaike.com/article/list/day?page=1&count=30"};
     }
 
     public class FragmentStartPagerAdapter extends FragmentStatePagerAdapter {
