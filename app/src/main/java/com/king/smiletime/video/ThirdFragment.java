@@ -2,6 +2,7 @@ package com.king.smiletime.video;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -287,9 +288,18 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
                 @Override
                 public void onClick(View view) {
                     int pos = holder.getLayoutPosition();
+
                     String liveUrl = ds.get(pos).getRtmp_live_url();
+                    String headurl = ds.get(pos).getAuthor().getHeadurl();
+                    String name = ds.get(pos).getAuthor().getName();
+                    int nick_id = ds.get(pos).getAuthor().getNick_id();
+                    int count = ds.get(pos).getVisitors_count();
                     Intent intent = new Intent(getActivity(), LiveActivity.class);
                     intent.putExtra("path", liveUrl);
+                    intent.putExtra("photo",headurl);
+                    intent.putExtra("author",name);
+                    intent.putExtra("nick_id",nick_id+"");
+                    intent.putExtra("count",count+"");
                     startActivity(intent);
 
                 }
@@ -300,7 +310,7 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
             holder.getContent().setText(lives.getContent());
             holder.getCount().setText(lives.getVisitors_count() + "");
             holder.getName().setText(lives.getAuthor().getName());
-            Picasso.with(getContext()).load(lives.getAuthor().getHeadurl()).into(holder.getImage());
+            Picasso.with(getContext()).load(lives.getAuthor().getHeadurl()).error(R.drawable.ic_launcher).into(holder.getImage());
 
         }
 
