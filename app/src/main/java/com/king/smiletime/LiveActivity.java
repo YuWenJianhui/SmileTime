@@ -161,6 +161,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
     private void aboutPopupWindow() {
         View contentView = View.inflate(this, R.layout.popupwindow, null);
         pw = new PopupWindow(contentView, RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        pw.setHeight(340);
         ImageView wechat_cicle = (ImageView) contentView.findViewById(R.id.wechat_circle);
         ImageView wechat = (ImageView) contentView.findViewById(R.id.wechat);
         ImageView qq = (ImageView) contentView.findViewById(R.id.qq);
@@ -225,7 +226,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         ObjectAnimator animator = ObjectAnimator.ofFloat(follower, "alpha", 1f, 0f);
 
         // 动画实例属性的设置
-        animator.setDuration(5000);
+        animator.setDuration(6000);
         animator.setRepeatCount(0);
 
         items.add(animator);
@@ -234,7 +235,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         // ①动画实例的创建
         animator = ObjectAnimator.ofFloat(follower, "translationY", 0, -200);
         // ②动画实例属性的设置
-        animator.setDuration(5000);
+        animator.setDuration(6000);
         animator.setRepeatCount(0);
         items.add(animator);
 
@@ -242,7 +243,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         // ①动画实例的创建
          animator = ObjectAnimator.ofFloat(follower, "scaleX", 1, 2);
         // ②动画实例属性的设置
-        animator.setDuration(5000);
+        animator.setDuration(6000);
         animator.setRepeatCount(0);
         items.add(animator);
 
@@ -251,7 +252,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         animator = ObjectAnimator.ofFloat(follower, "scaleY", 1, 2);
 
         // ②动画实例属性的设置
-        animator.setDuration(5000);
+        animator.setDuration(6000);
         animator.setRepeatCount(0);
         items.add(animator);
 
