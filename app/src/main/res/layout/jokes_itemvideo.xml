@@ -175,6 +175,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="end"
                 android:clickable="true"
+                android:saveEnabled="false"
                 android:onClick="imgaction"
                 android:src="@mipmap/share" />
         </LinearLayout>

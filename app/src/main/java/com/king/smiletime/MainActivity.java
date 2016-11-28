@@ -20,9 +20,11 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //不显示actionbar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-          //不显示actionbar
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
 //        ActionBar actionBar = getActionBar();
 //        actionBar.show();
         setContentView(R.layout.activity_main);
@@ -30,7 +32,6 @@ public class MainActivity extends FragmentActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.tdfl_id, new FirstFragment());
         transaction.commit();
-
 
 
     }
@@ -47,10 +48,10 @@ public class MainActivity extends FragmentActivity {
                 break;
             case R.id.video_id:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.tdfl_id,new VideoFragment()).commit();
+                        .replace(R.id.tdfl_id, new VideoFragment()).commit();
                 break;
             case R.id.my_id:
-                fragmentManager.beginTransaction().replace(R.id.tdfl_id,new MyFragment()).commit();
+                fragmentManager.beginTransaction().replace(R.id.tdfl_id, new MyFragment()).commit();
                 break;
         }
     }
