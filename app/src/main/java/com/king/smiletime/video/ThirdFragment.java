@@ -244,11 +244,11 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
                     index = 0;
                 }
 
-                handler.sendEmptyMessageDelayed(1, 3000);// 给自己发送
+                handler.sendEmptyMessageDelayed(1, 2000);// 给自己发送
             }
         };
 
-        handler.sendEmptyMessageDelayed(1, 3000);// 启动方法handleMessage
+        handler.sendEmptyMessageDelayed(1, 2000);// 启动方法handleMessage
     }
 
 
