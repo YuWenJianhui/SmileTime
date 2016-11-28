@@ -64,7 +64,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
         playfunction();
         //关于recyclerView
         aboutRecyclerView();
-
+        //关于PopupWindow
         aboutPopupWindow();
 
     }
@@ -118,7 +118,6 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
     public void playfunction(){
         videoView.setVideoPath(liveUrl);
         videoView.requestFocus();
-
     }
 
 
@@ -144,10 +143,8 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
                 addanimator();
                 break;
             case R.id.share:
-                Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
-                // 构建PopupWindow的实例
+                //在底部弹出分享菜单
                 pw.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM,0,0);
-
                 break;
             case R.id.edit:
                 Toast.makeText(this, "发送消息", Toast.LENGTH_SHORT).show();
@@ -160,6 +157,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
     //分享
     private void aboutPopupWindow() {
         View contentView = View.inflate(this, R.layout.popupwindow, null);
+        // 构建PopupWindow的实例
         pw = new PopupWindow(contentView, RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         pw.setHeight(340);
         ImageView wechat_cicle = (ImageView) contentView.findViewById(R.id.wechat_circle);
