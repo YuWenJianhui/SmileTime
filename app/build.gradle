@@ -3,6 +3,8 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.king.smiletime"
         minSdkVersion 19

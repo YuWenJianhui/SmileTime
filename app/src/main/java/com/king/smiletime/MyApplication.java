@@ -5,10 +5,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
-
 import org.xutils.x;
 
 /**

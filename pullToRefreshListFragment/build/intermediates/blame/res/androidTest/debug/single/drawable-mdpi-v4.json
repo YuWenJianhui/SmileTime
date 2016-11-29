@@ -120,12 +120,12 @@
         "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable-mdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
         "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable-mdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",

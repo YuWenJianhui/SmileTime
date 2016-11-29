@@ -2,14 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/welcomefour" >
+    android:background="@mipmap/welcomeonefour" >
 
     <ImageView
         android:id="@+id/iv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/into"
+        android:layout_marginBottom="36dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
