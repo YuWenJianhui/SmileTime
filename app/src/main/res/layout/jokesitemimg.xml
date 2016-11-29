@@ -130,7 +130,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:clickable="true"
-                android:onClick="imgaction"
+
                 android:src="@drawable/smilesector" />
 
             <ImageView
@@ -139,8 +139,6 @@
                 android:layout_height="20dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="40dp"
-                android:clickable="true"
-                android:onClick="imgaction"
                 android:src="@drawable/sadsector" />
 
             <ImageView
@@ -165,7 +163,6 @@
                 android:layout_height="20dp"
                 android:layout_gravity="end"
                 android:clickable="true"
-                android:onClick="imgaction"
                 android:saveEnabled="false"
                 android:src="@mipmap/share" />
         </LinearLayout>

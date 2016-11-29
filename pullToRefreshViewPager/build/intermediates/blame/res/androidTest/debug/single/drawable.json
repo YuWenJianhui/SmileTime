@@ -1,10 +1,10 @@
 [
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable\\indicator_bg_bottom.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable\\indicator_bg_bottom.xml"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable\\indicator_bg_top.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable\\indicator_bg_top.xml"
     }
 ]

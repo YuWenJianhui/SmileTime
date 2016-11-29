@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -217,36 +218,18 @@ public class JokesFragment extends Fragment {
                 switch (type) {
 
                     case TYPE_TEXT:
-                        holdertext = new ViewHoldertext();
                         convertView = View.inflate(getContext(), R.layout.jokesitem, null);
-                        holdertext.headimg = (ImageView) convertView.findViewById(R.id.jokesitmeheadimg_id);
-                        holdertext.username = (TextView) convertView.findViewById(R.id.jokesitemusername_id);
-                        holdertext.typeimg = (ImageView) convertView.findViewById(R.id.jokesitemtypeimg_id);
-                        holdertext.typetext = (TextView) convertView.findViewById(R.id.jokesitemtypetext_id);
-                        holdertext.itemtext = (TextView) convertView.findViewById(R.id.jokesitemtext_id);
-                        holdertext.itemsmilenumb = (TextView) convertView.findViewById(R.id.jokesitemsmilenumb_id);
-                        holdertext.itemcommentnumb = (TextView) convertView.findViewById(R.id.jokesitemcommentnumb_id);
-                        holdertext.itemsharenumb = (TextView) convertView.findViewById(R.id.jokesitemsharenumb_id);
+                        holdertext = new ViewHoldertext(convertView);
                         convertView.setTag(holdertext);
                         break;
                     case TYPE_IMG:
-                        holderimg = new ViewHolderimg();
                         convertView = View.inflate(getContext(), R.layout.jokesitemimg, null);
-                        holderimg.headimg = (ImageView) convertView.findViewById(R.id.jokesitmeimgheadimg_id);
-                        holderimg.username = (TextView) convertView.findViewById(R.id.jokesitemimguesrname_id);
-                        holderimg.typeimg = (ImageView) convertView.findViewById(R.id.jokesitemimgtypeimg_id);
-                        holderimg.typetext = (TextView) convertView.findViewById(R.id.jokesitemimgtypetext_id);
-                        holderimg.itemtext = (TextView) convertView.findViewById(R.id.jokesitemimgtext_id);
-                        holderimg.itemimg = (ImageView) convertView.findViewById(R.id.jokesitemimg_id);
-                        holderimg.itemsmilenumb = (TextView) convertView.findViewById(R.id.jokesitemimgsmilenumb_id);
-                        holderimg.itemcommentnumb = (TextView) convertView.findViewById(R.id.jokesitemimgcommentnumb_id);
-                        holderimg.itemsharenumb = (TextView) convertView.findViewById(R.id.jokesitemimgsharenumb_id);
+                        holderimg = new ViewHolderimg(convertView);
                         convertView.setTag(holderimg);
                         break;
                     case TYPE_VIDO:
                         convertView = View.inflate(getContext(), R.layout.jokes_itemvideo, null);
                         holdervido = new ViewHolderVideo(convertView);
-
                         convertView.setTag(holdervido);
                         break;
                     default:
@@ -433,7 +416,7 @@ public class JokesFragment extends Fragment {
         }
 
 
-        class ViewHoldertext {
+        class ViewHoldertext implements View.OnClickListener {
 
             public ImageView headimg;
             public TextView username;
@@ -443,10 +426,90 @@ public class JokesFragment extends Fragment {
             public TextView itemsmilenumb;
             public TextView itemcommentnumb;
             public TextView itemsharenumb;
+            public ImageView itemsmile;
+            public ImageView itemsad;
+            public ImageView comment;
+            public ImageView share;
 
+            public ViewHoldertext(View convertView) {
+
+                this.headimg = (ImageView) convertView.findViewById(R.id.jokesitmeheadimg_id);
+                this.username = (TextView) convertView.findViewById(R.id.jokesitemusername_id);
+                this.typeimg = (ImageView) convertView.findViewById(R.id.jokesitemtypeimg_id);
+                this.typetext = (TextView) convertView.findViewById(R.id.jokesitemtypetext_id);
+                this.itemtext = (TextView) convertView.findViewById(R.id.jokesitemtext_id);
+                this.itemsmilenumb = (TextView) convertView.findViewById(R.id.jokesitemsmilenumb_id);
+                this.itemcommentnumb = (TextView) convertView.findViewById(R.id.jokesitemcommentnumb_id);
+                this.itemsharenumb = (TextView) convertView.findViewById(R.id.jokesitemsharenumb_id);
+                this.itemsmile = (ImageView) convertView.findViewById(R.id.jokesitemsmileimg_id);
+                this.itemsad = (ImageView) convertView.findViewById(R.id.jokesitemsadimg_id);
+                this.comment = (ImageView) convertView.findViewById(R.id.jokesitemcommentimg_id);
+                this.share = (ImageView) convertView.findViewById(R.id.jokesitemshareimg_id);
+                itemsmile.setOnClickListener(this);
+                itemsad.setOnClickListener(this);
+                comment.setOnClickListener(this);
+                share.setOnClickListener(this);
+            }
+
+
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.jokesitemsmileimg_id:
+                        String r = itemsmilenumb.getText().toString();
+                        int a = Integer.parseInt(r);
+                        itemsmilenumb.setText(a + 1 + "");
+                        itemsmile.setEnabled(false);
+                        itemsad.setEnabled(true);
+                        break;
+                    case R.id.jokesitemsadimg_id:
+                        String s = itemsmilenumb.getText().toString();
+                        int b = Integer.parseInt(s);
+                        itemsmilenumb.setText(b - 1 + "");
+                        itemsmile.setEnabled(true);
+                        itemsad.setEnabled(false);
+                        break;
+                    case R.id.jokesitemcommentimg_id:
+                        break;
+                    case R.id.jokesitemshareimg_id:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        //把布局文件先填充成View对象
+                        View inflate = View.inflate(getActivity(), R.layout.alertdialogmenu, null);
+                        ImageView weibo = (ImageView) inflate.findViewById(R.id.weibo_id);
+                        ImageView weixin = (ImageView) inflate.findViewById(R.id.weixin_id);
+                        ImageView qq = (ImageView) inflate.findViewById(R.id.qq_id);
+                        ImageView copy = (ImageView) inflate.findViewById(R.id.copy_id);
+                        ImageView collection = (ImageView) inflate.findViewById(R.id.collection_id);
+                        ImageView report = (ImageView) inflate.findViewById(R.id.report_id);
+                        weibo.setOnClickListener(this);
+                        weixin.setOnClickListener(this);
+                        qq.setOnClickListener(this);
+                        copy.setOnClickListener(this);
+                        collection.setOnClickListener(this);
+                        report.setOnClickListener(this);
+                        //把填充得来的view对象设置为对话框显示内容
+                        builder.setView(inflate);
+                        builder.show();
+                        break;
+                    case R.id.weibo_id:
+                        break;
+                    case R.id.weixin_id:
+                        break;
+                    case R.id.qq_id:
+                        break;
+                    case R.id.copy_id:
+                        break;
+                    case R.id.collection_id:
+                        break;
+                    case R.id.report_id:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
-        private final class ViewHolderimg {
+        private final class ViewHolderimg implements View.OnClickListener {
             public ImageView headimg;
             public TextView username;
             public ImageView typeimg;
@@ -456,6 +519,88 @@ public class JokesFragment extends Fragment {
             public TextView itemsmilenumb;
             public TextView itemcommentnumb;
             public TextView itemsharenumb;
+            public ImageView itemsmile;
+            public ImageView itemsad;
+            public ImageView comment;
+            public ImageView share;
+
+            public ViewHolderimg(View convertView) {
+
+                this.headimg = (ImageView) convertView.findViewById(R.id.jokesitmeimgheadimg_id);
+                this.username = (TextView) convertView.findViewById(R.id.jokesitemimguesrname_id);
+                this.typeimg = (ImageView) convertView.findViewById(R.id.jokesitemimgtypeimg_id);
+                this.typetext = (TextView) convertView.findViewById(R.id.jokesitemimgtypetext_id);
+                this.itemtext = (TextView) convertView.findViewById(R.id.jokesitemimgtext_id);
+                this.itemimg = (ImageView) convertView.findViewById(R.id.jokesitemimg_id);
+                this.itemsmilenumb = (TextView) convertView.findViewById(R.id.jokesitemimgsmilenumb_id);
+                this.itemcommentnumb = (TextView) convertView.findViewById(R.id.jokesitemimgcommentnumb_id);
+                this.itemsharenumb = (TextView) convertView.findViewById(R.id.jokesitemimgsharenumb_id);
+                this.itemsmile = (ImageView) convertView.findViewById(R.id.jokesitemimgsmileimg_id);
+                this.itemsad = (ImageView) convertView.findViewById(R.id.jokesitemimgsadimg_id);
+                this.comment = (ImageView) convertView.findViewById(R.id.jokesitemimgcommentimg_id);
+                this.share = (ImageView) convertView.findViewById(R.id.jokesitemimgshareimg_id);
+                itemsmile.setOnClickListener(this);
+                itemsad.setOnClickListener(this);
+                comment.setOnClickListener(this);
+                share.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.jokesitemimgsmileimg_id:
+                        String r = itemsmilenumb.getText().toString();
+                        int a = Integer.parseInt(r);
+                        itemsmilenumb.setText(a + 1 + "");
+                        itemsmile.setEnabled(false);
+                        itemsad.setEnabled(true);
+                        break;
+                    case R.id.jokesitemimgsadimg_id:
+                        String s = itemsmilenumb.getText().toString();
+                        int b = Integer.parseInt(s);
+                        itemsmilenumb.setText(b - 1 + "");
+                        itemsmile.setEnabled(true);
+                        itemsad.setEnabled(false);
+                        break;
+                    case R.id.jokesitemimgcommentimg_id:
+                        break;
+                    case R.id.jokesitemimgshareimg_id:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("分享给朋友");
+                        //把布局文件先填充成View对象
+                        View inflate = View.inflate(getActivity(), R.layout.alertdialogmenu, null);
+                        ImageView weibo = (ImageView) inflate.findViewById(R.id.weibo_id);
+                        ImageView weixin = (ImageView) inflate.findViewById(R.id.weixin_id);
+                        ImageView qq = (ImageView) inflate.findViewById(R.id.qq_id);
+                        ImageView copy = (ImageView) inflate.findViewById(R.id.copy_id);
+                        ImageView collection = (ImageView) inflate.findViewById(R.id.collection_id);
+                        ImageView report = (ImageView) inflate.findViewById(R.id.report_id);
+                        weibo.setOnClickListener(this);
+                        weixin.setOnClickListener(this);
+                        qq.setOnClickListener(this);
+                        copy.setOnClickListener(this);
+                        collection.setOnClickListener(this);
+                        report.setOnClickListener(this);
+                        //把填充得来的view对象设置为对话框显示内容
+                        builder.setView(inflate);
+                        builder.show();
+                        break;
+                    case R.id.weibo_id:
+                        break;
+                    case R.id.weixin_id:
+                        break;
+                    case R.id.qq_id:
+                        break;
+                    case R.id.copy_id:
+                        break;
+                    case R.id.collection_id:
+                        break;
+                    case R.id.report_id:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private final class ViewHolderVideo implements View.OnClickListener {
@@ -484,6 +629,7 @@ public class JokesFragment extends Fragment {
                 this.itemsharenumb = (TextView) convertView.findViewById(R.id.jokesitemvideosharenumb_id);
                 itemvideoimg.setOnClickListener(this);
                 itemsurface.setOnClickListener(this);
+                notifyDataSetChanged();
             }
 
             @Override

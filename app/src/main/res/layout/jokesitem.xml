@@ -116,8 +116,6 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:clickable="true"
-                android:onClick="imgaction"
-
                 android:src="@drawable/smilesector" />
 
             <ImageView
@@ -127,7 +125,6 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="40dp"
                 android:clickable="true"
-                android:onClick="imgaction"
                 android:src="@drawable/sadsector" />
 
             <ImageView
@@ -137,7 +134,6 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="40dp"
                 android:clickable="true"
-                android:onClick="imgaction"
                 android:src="@mipmap/comment" />
         </LinearLayout>
 
@@ -148,13 +144,12 @@
             android:layout_marginRight="5dp">
 
             <ImageView
-                android:id="@+id/jokesitemimgshareimg_id"
+                android:id="@+id/jokesitemshareimg_id"
                 android:layout_width="25dp"
                 android:layout_height="20dp"
                 android:layout_gravity="end"
                 android:clickable="true"
                 android:saveEnabled="false"
-                android:onClick="imgaction"
                 android:src="@mipmap/share" />
         </LinearLayout>
     </LinearLayout>
