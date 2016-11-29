@@ -46,6 +46,7 @@
         <activity android:name=".my.activitys.SettingsActivity"/>
         <activity android:name=".WebActivity"/>
         <activity android:name=".LiveActivity"/>
+        <activity android:name=".LoadappActivity"/>
         <receiver android:name=".my.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
