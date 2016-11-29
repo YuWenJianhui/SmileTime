@@ -15,7 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="暂时没有数据"/>
+        android:drawableTop="@mipmap/empty_list_icon"
+        android:gravity="center_horizontal"
+        android:text=" 暂时无内容
+       快去粉你喜欢的主播吧"/>
 
 
 
