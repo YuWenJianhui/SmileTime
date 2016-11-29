@@ -3,7 +3,7 @@
     <string name="Message">文明直播，严禁黄赌毒、吸烟和故意黑屏等违规内容。24小时巡视，违者将被永久封号。\n经查实，某些用户假冒主播或用户扰乱社区秩序，做永久封号处理。如再发生类似现象，社区将给予从重处理。\n【转盘夜间维护中，还有抽奖币的宝宝25号11点后再战】</string>
     <string-array name="picNames">
     <item>welcomeone</item>
-    <item>welcometow</item>
+    <item>welcometwo</item>
     <item>welcomethree</item>
     </string-array>
     <string-array name="tbname">
