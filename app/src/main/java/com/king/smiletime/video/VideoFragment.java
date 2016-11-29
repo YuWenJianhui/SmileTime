@@ -1,5 +1,6 @@
 package com.king.smiletime.video;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -11,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.king.smiletime.LoadappActivity;
 import com.king.smiletime.R;
 
 import java.util.LinkedList;
@@ -21,7 +24,7 @@ import java.util.List;
  * Created by Administrator on 2016/11/17.
  */
 
-public class VideoFragment extends Fragment {
+public class VideoFragment extends Fragment implements View.OnClickListener{
 
     private View view;
     private TabLayout tabLayout;
@@ -30,6 +33,7 @@ public class VideoFragment extends Fragment {
     private List<Fragment> fragments;
     private MyFragmentPagerAdapter adapter;
     private String url;
+    private TextView textbtn;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +60,15 @@ public class VideoFragment extends Fragment {
         tabLayout =  (TabLayout) view.findViewById(R.id.tab_id);
         viewPager = (ViewPager) view.findViewById(R.id.vpger_id);
         tabNames = getResources().getStringArray(R.array.tabNames3);
+        textbtn = (TextView) view.findViewById(R.id.tv_id);
         url="http://live.qiushibaike.com/live/all/list?count=30&page=;&rqcnt=;";
+        textbtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getContext(), LoadappActivity.class);
+        startActivity(intent);
 
     }
 
@@ -93,6 +105,9 @@ public class VideoFragment extends Fragment {
         //绑定
         viewPager.setAdapter(adapter);
     }
+
+
+
     private final  class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         public MyFragmentPagerAdapter(FragmentManager fm) {
