@@ -42,4 +42,5 @@ dependencies {
     compile project(':pullToRefreshListFragment')
     compile project(':pullToRefreshViewPager')
     compile project(':vitamio')
+    compile project(':PushSDK')
 }

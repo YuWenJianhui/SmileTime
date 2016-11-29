@@ -1,14 +1,14 @@
 [
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\indicator_arrow.png",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\indicator_arrow.png"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\indicator_arrow.png",
+        "source": "E:\\project\\SmileTime\\pullToRefreshViewPager\\build\\intermediates\\exploded-aar\\SmileTime\\library\\unspecified\\res\\drawable-mdpi-v4\\indicator_arrow.png"
     }
 ]

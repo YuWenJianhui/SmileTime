@@ -1,18 +1,18 @@
 [
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_icon_group.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_template_icon_group.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_template_custom_big.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_action.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "F:\\AndroidProject\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_action_tombstone.xml"
+        "merged": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "E:\\project\\SmileTime\\pullToRefreshListFragment\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout-v21\\notification_template_icon_group.xml"
     }
 ]
