@@ -50,12 +50,12 @@ public class ImageFragment extends Fragment{
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tag.equals("0")){
+                if(tag.equals("1")){
                     Intent intent = new Intent(getActivity(), WebActivity.class);
                     intent.putExtra("imageUrl","http://mmbiz.qpic.cn/mmbiz_jpg/uO8gic0Fb8bZNWImkFCpRhVkN6nhRTXLGDnEvsG0BtiaqYFdmycwWNThF3VnNzCuIAza4WuvrvjWWlvPhOthoibZw/640");
                     startActivity(intent);
 
-                }else if(tag.equals("1")){
+                }else if(tag.equals("2")){
                     Intent intent = new Intent(getActivity(), WebActivity.class);
                     intent.putExtra("imageUrl","http://static.huoshantv.com/images/touch/banner-1.png");
                     startActivity(intent);
