@@ -289,12 +289,14 @@ public class ThirdFragment extends Fragment implements DownloadJsonDataAysncTask
                 public void onClick(View view) {
                     int pos = holder.getLayoutPosition();
 
+                    String shareurl = ds.get(pos).getShare().getUrl();
                     String liveUrl = ds.get(pos).getRtmp_live_url();
                     String headurl = ds.get(pos).getAuthor().getHeadurl();
                     String name = ds.get(pos).getAuthor().getName();
                     int nick_id = ds.get(pos).getAuthor().getNick_id();
                     int count = ds.get(pos).getVisitors_count();
                     Intent intent = new Intent(getActivity(), LiveActivity.class);
+                    intent.putExtra("url",shareurl);
                     intent.putExtra("path", liveUrl);
                     intent.putExtra("photo",headurl);
                     intent.putExtra("author",name);

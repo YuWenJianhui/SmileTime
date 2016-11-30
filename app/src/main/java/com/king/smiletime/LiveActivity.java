@@ -22,6 +22,11 @@ import android.widget.Toast;
 
 import com.king.views.MySelfView;
 import com.squareup.picasso.Picasso;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMVideo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -50,6 +55,23 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
     private String nick;
     private ImageView follower;
     private PopupWindow pw;
+    private String shareurl;
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA share_media) {
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+            Toast.makeText(LiveActivity.this, "分享失败", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA share_media) {
+            Toast.makeText(LiveActivity.this, "取消分享", Toast.LENGTH_LONG).show();
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +103,7 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
 
     private void getData() {
         Intent intent = getIntent();
+        shareurl =  intent.getStringExtra("url");
         liveUrl = intent.getStringExtra("path");
         photoUrl = intent.getStringExtra("photo");
         name = intent.getStringExtra("author");
@@ -194,21 +217,64 @@ public class LiveActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.wechat_circle:
-                Toast.makeText(this, "分享到朋友圈", Toast.LENGTH_SHORT).show();
+                ShareAction actionqq = new ShareAction(this);
+                actionqq.withTitle("给你分享一条美女直播");
+                actionqq.withText("快进直播间欣赏哦。。。");
+                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                UMImage umImage = new UMImage(this,photoUrl);
+                actionqq.withMedia(umImage);
+                actionqq.withTargetUrl(shareurl);
+                actionqq.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener).share();
                 break;
             case R.id.wechat:
+                 actionqq = new ShareAction(this);
+                actionqq.withTitle("给你分享一条美女直播");
+                actionqq.withText("快进直播间欣赏哦。。。");
+                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                 umImage = new UMImage(this,photoUrl);
+                actionqq.withMedia(umImage);
+                actionqq.withTargetUrl(shareurl);
+                actionqq.setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener).share();
                 break;
             case R.id.qq:
+                 actionqq = new ShareAction(this);
+                actionqq.withTitle("给你分享一条美女直播");
+                actionqq.withText("快进直播间欣赏哦。。。");
+                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                 umImage = new UMImage(this,photoUrl);
+                actionqq.withMedia(umImage);
+                actionqq.withTargetUrl(shareurl);
+                actionqq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
                 break;
+
             case R.id.qzone:
+                 actionqq = new ShareAction(this);
+                actionqq.withTitle("给你分享一条美女直播");
+                actionqq.withText("快进直播间欣赏哦。。。");
+                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                 umImage = new UMImage(this,photoUrl);
+                actionqq.withMedia(umImage);
+                actionqq.withTargetUrl(shareurl);
+                actionqq.setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener).share();
                 break;
             case R.id.weibo:
+                 actionqq = new ShareAction(this);
+                actionqq.withTitle("给你分享一条美女直播");
+                actionqq.withText("快进直播间欣赏哦。。。");
+                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                 umImage = new UMImage(this,photoUrl);
+                actionqq.withMedia(umImage);
+                actionqq.withTargetUrl(shareurl);
+                actionqq.setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener).share();
                 break;
             case R.id.qiuyou:
+                Toast.makeText(this, "分享给糗友", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.qiuyou_circle:
+                Toast.makeText(this, "分享到糗友圈", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.copy:
+                Toast.makeText(this, "分享链接", Toast.LENGTH_SHORT).show();
                 break;
         }
 
