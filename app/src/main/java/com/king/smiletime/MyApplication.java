@@ -7,6 +7,10 @@ import android.net.NetworkInfo;
 import android.util.Log;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
+import com.umeng.socialize.Config;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
+
 import org.xutils.x;
 
 /**
@@ -44,6 +48,8 @@ public class MyApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
         x.Ext.init(this);
+        UMShareAPI.get(this);
+        Config.REDIRECT_URL = "您新浪后台的回调地址";
         NetworkInfo activeNetwork = ((ConnectivityManager)(getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
         if (activeNetwork != null){
             if (activeNetwork.isAvailable()){
@@ -70,6 +76,14 @@ public class MyApplication extends Application {
 
             }
         });
+
+    }
+    {
+
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+
 
     }
     public static Context getContext() {

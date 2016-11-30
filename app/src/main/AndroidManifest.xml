@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.king.smiletime">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 
     <application
         android:name=".MyApplication"
@@ -22,49 +37,120 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".my.activitys.UserInformationParticularsActivity" android:theme="@style/NobarTheme">
+        <activity
+            android:name=".my.activitys.UserInformationParticularsActivity"
+            android:theme="@style/NobarTheme"></activity>
+        <activity android:name=".my.activitys.UserLoginActivity" />
+        <activity android:name=".my.activitys.ManagermentThingActivity" />
+        <activity android:name=".my.activitys.AboutQiuBaiActivity" />
+        <activity android:name=".my.activitys.BlacklistManageActivity" />
+        <activity android:name=".my.activitys.NearFriendActivity" />
+        <activity android:name=".my.activitys.IDPinlessActivity" />
+        <activity android:name=".my.activitys.InformationSettingsActivity" />
+        <activity android:name=".my.activitys.MyDynamicActivity" />
+        <activity android:name=".my.activitys.UserHeadPortraitActivity" />
+        <activity android:name=".my.activitys.UserEditorActivity" />
+        <activity android:name=".my.activitys.MyMedalManageActivity" />
+        <activity android:name=".my.activitys.MyCollectActivity" />
+        <activity android:name=".my.activitys.MyJoinActivity" />
+        <activity android:name=".my.activitys.MymedalActivity" />
+        <activity android:name=".my.activitys.MyQiushiActivity" />
+        <activity android:name=".my.activitys.CommonActivity" />
+        <activity android:name=".my.activitys.GroupActivity" />
+        <activity android:name=".my.activitys.RoutineSettingActivity" />
+        <activity android:name=".my.activitys.ScripManageActivity" />
+        <activity android:name=".my.activitys.SettingsActivity" />
+        <activity android:name=".WebActivity" />
+        <activity android:name=".LiveActivity" />
+        <activity android:name=".LoadappActivity" />
+        <activity
+            android:name=".WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".my.activitys.UserLoginActivity"/>
-        <activity android:name=".my.activitys.ManagermentThingActivity"/>
-        <activity android:name=".my.activitys.AboutQiuBaiActivity"/>
-        <activity android:name=".my.activitys.BlacklistManageActivity"/>
-        <activity android:name=".my.activitys.NearFriendActivity"/>
-        <activity android:name=".my.activitys.IDPinlessActivity"/>
-        <activity android:name=".my.activitys.InformationSettingsActivity"/>
-        <activity android:name=".my.activitys.MyDynamicActivity"/>
-        <activity android:name=".my.activitys.UserHeadPortraitActivity"/>
-        <activity android:name=".my.activitys.UserEditorActivity"/>
-        <activity android:name=".my.activitys.MyMedalManageActivity"/>
-        <activity android:name=".my.activitys.MyCollectActivity"/>
-        <activity android:name=".my.activitys.MyJoinActivity"/>
-        <activity android:name=".my.activitys.MymedalActivity"/>
-        <activity android:name=".my.activitys.MyQiushiActivity"/>
-        <activity android:name=".my.activitys.CommonActivity"/>
-        <activity android:name=".my.activitys.GroupActivity"/>
-        <activity android:name=".my.activitys.RoutineSettingActivity"/>
-        <activity android:name=".my.activitys.ScripManageActivity"/>
-        <activity android:name=".my.activitys.SettingsActivity"/>
-        <activity android:name=".WebActivity"/>
-        <activity android:name=".LiveActivity"/>
-        <activity android:name=".LoadappActivity"/>
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" >
+        </activity>
+        <service android:name="com.sina.weibo.sdk.net.DownloadService"
+            android:exported="false"></service>
+
+        <!--<activity-->
+        <!--android:name=".wxapi.WXEntryActivity"-->
+        <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+        <!--android:exported="true"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
+        <!--<activity-->
+        <!--android:name="com.umeng.qq.tencent.AuthActivity"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:noHistory="true" >-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.VIEW" />-->
+
+        <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <!--<category android:name="android.intent.category.BROWSABLE" />-->
+
+        <!--<data android:scheme="tencent100424468" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity-->
+        <!--android:name="com.umeng.qq.tencent.AssistActivity"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize"/>-->
+
+
+
+
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:theme="@style/Theme.UMDefault"
+            android:excludeFromRecents="true"
+            />
         <receiver android:name=".my.MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="583cf492aed1794692001050">
-        </meta-data>
+            android:value="583cf492aed1794692001050"></meta-data>
         <meta-data
             android:name="UMENG_MESSAGE_SECRET"
-            android:value="0bcaac69e550fda778424fbfe267dbf6">
-        </meta-data>
+            android:value="0bcaac69e550fda778424fbfe267dbf6"></meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Channel ID" >
-        </meta-data>
+            android:value="Channel ID"></meta-data>
     </application>
 
 </manifest>

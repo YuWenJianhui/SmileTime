@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/PushSDK" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library1" />
             <option value="$PROJECT_DIR$/pullToRefreshListFragment" />
             <option value="$PROJECT_DIR$/pullToRefreshViewPager" />
             <option value="$PROJECT_DIR$/vitamio" />
