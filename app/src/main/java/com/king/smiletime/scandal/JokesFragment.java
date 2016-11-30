@@ -519,107 +519,26 @@ public class JokesFragment extends Fragment {
                         break;
                     case R.id.weibo_id:
                         ShareAction actionsina = new ShareAction(getActivity());
-                        String formatsina = itemsBean.getFormat();
-                        switch (formatsina) {
-                            case "video":
-                                actionsina.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionsina.withMedia(umVideo);
-                                actionsina.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionsina.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionsina.withMedia(umImage);
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionsina.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionsina.withTitle("给你看一条好笑糗事");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionsina.withText(itemsBean.getContent());
+                        actionsina.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         actionsina.setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener).share();
                         break;
                     case R.id.weixin_id:
                         ShareAction action = new ShareAction(getActivity());
-                        String format = itemsBean.getFormat();
-                        switch (format) {
-                            case "video":
-                                action.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                action.withMedia(umVideo);
-                                action.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                action.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                action.withMedia(umImage);
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                action.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        action.withTitle("给你看一条好笑糗事");
+                        //shareAction.withText(itemsBean.getContent());
+                        action.withText(itemsBean.getContent());
+                        action.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         action.setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener).share();
                         break;
                     case R.id.qq_id:
                         ShareAction actionqq = new ShareAction(getActivity());
-                        String formatqq = itemsBean.getFormat();
-                        switch (formatqq) {
-                            case "video":
-                                actionqq.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionqq.withMedia(umVideo);
-                                actionqq.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionqq.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionqq.withMedia(umImage);
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionqq.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionqq.withTitle("给你看一条好笑糗事");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionqq.withText(itemsBean.getContent());
+                        actionqq.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         actionqq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
                         break;
                     case R.id.copy_id:
@@ -729,107 +648,51 @@ public class JokesFragment extends Fragment {
                         break;
                     case R.id.weibo_id:
                         ShareAction actionsina = new ShareAction(getActivity());
-                        String formatsina = itemsBean.getFormat();
-                        switch (formatsina) {
-                            case "video":
-                                actionsina.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionsina.withMedia(umVideo);
-                                actionsina.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionsina.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionsina.withMedia(umImage);
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionsina.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionsina.withTitle("给你看一张好笑糗图");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionsina.withText(itemsBean.getContent());
+                        String img = itemsBean.getId() + "";
+                        String img1 = img.substring(0, img.length() - 4) + "/";
+                        StringBuffer imgbf = new StringBuffer();
+                        imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
+                        imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
+                        //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                        UMImage umImage = new UMImage(getActivity(), imgbf.toString());
+                        actionsina.withMedia(umImage);
+                        actionsina.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         actionsina.setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener).share();
                         break;
                     case R.id.weixin_id:
                         ShareAction action = new ShareAction(getActivity());
-                        String format = itemsBean.getFormat();
-                        switch (format) {
-                            case "video":
-                                action.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                action.withMedia(umVideo);
-                                action.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                action.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                action.withMedia(umImage);
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                action.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        action.withTitle("给你看一张好笑糗图");
+                        //shareAction.withText(itemsBean.getContent());
+                        action.withText(itemsBean.getContent());
+                        img = itemsBean.getId() + "";
+                        img1 = img.substring(0, img.length() - 4) + "/";
+                        imgbf = new StringBuffer();
+                        imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
+                        imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
+                        //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                        umImage = new UMImage(getActivity(), imgbf.toString());
+                        action.withMedia(umImage);
+                        action.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         action.setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener).share();
                         break;
                     case R.id.qq_id:
                         ShareAction actionqq = new ShareAction(getActivity());
-                        String formatqq = itemsBean.getFormat();
-                        switch (formatqq) {
-                            case "video":
-                                actionqq.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionqq.withMedia(umVideo);
-                                actionqq.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionqq.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionqq.withMedia(umImage);
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionqq.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionqq.withTitle("给你看一张好笑糗图");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionqq.withText(itemsBean.getContent());
+                        img = itemsBean.getId() + "";
+                        img1 = img.substring(0, img.length() - 4) + "/";
+                        imgbf = new StringBuffer();
+                        imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
+                        imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
+                        //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
+                        umImage = new UMImage(getActivity(), imgbf.toString());
+                        actionqq.withMedia(umImage);
+                        actionqq.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
+
                         actionqq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
                         break;
                     case R.id.copy_id:
@@ -954,107 +817,35 @@ public class JokesFragment extends Fragment {
                         break;
                     case R.id.weibo_id:
                         ShareAction actionsina = new ShareAction(getActivity());
-                        String formatsina = itemsBean.getFormat();
-                        switch (formatsina) {
-                            case "video":
-                                actionsina.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionsina.withMedia(umVideo);
-                                actionsina.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionsina.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionsina.withMedia(umImage);
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionsina.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionsina.withText(itemsBean.getContent());
-                                actionsina.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionsina.withTitle("给你看一条好笑视频");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionsina.withText(itemsBean.getContent());
+                        UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
+                        actionsina.withMedia(umVideo);
+                        actionsina.withTargetUrl(itemsBean.getHigh_url());
+                        actionsina.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         actionsina.setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener).share();
                         break;
                     case R.id.weixin_id:
                         ShareAction action = new ShareAction(getActivity());
-                        String format = itemsBean.getFormat();
-                        switch (format) {
-                            case "video":
-                                action.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                action.withMedia(umVideo);
-                                action.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                action.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                action.withMedia(umImage);
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                action.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                action.withText(itemsBean.getContent());
-                                action.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        action.withTitle("给你看一条好笑视频");
+                        //shareAction.withText(itemsBean.getContent());
+                        action.withText(itemsBean.getContent());
+                        umVideo = new UMVideo(itemsBean.getHigh_url());
+                        action.withMedia(umVideo);
+                        action.withTargetUrl(itemsBean.getHigh_url());
+                        action.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         action.setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener).share();
                         break;
                     case R.id.qq_id:
                         ShareAction actionqq = new ShareAction(getActivity());
-                        String formatqq = itemsBean.getFormat();
-                        switch (formatqq) {
-                            case "video":
-                                actionqq.withTitle("给你看一条好笑视频");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                UMVideo umVideo = new UMVideo(itemsBean.getHigh_url());
-                                actionqq.withMedia(umVideo);
-                                actionqq.withTargetUrl(itemsBean.getHigh_url());
-                                break;
-                            case "image":
-                                actionqq.withTitle("给你看一张好笑糗图");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                String img = itemsBean.getId() + "";
-                                String img1 = img.substring(0, img.length() - 4) + "/";
-                                StringBuffer imgbf = new StringBuffer();
-                                imgbf.append("http://pic.qiushibaike.com/system/pictures/").append(img1);
-                                imgbf.append(img + "/").append("medium/").append(itemsBean.getImage());
-                                //UMImage umImage = new UMImage(activity,itemsBean.getLow_url());
-                                UMImage umImage = new UMImage(getActivity(), imgbf.toString());
-                                actionqq.withMedia(umImage);
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                            case "text":
-                                actionqq.withTitle("给你看一条好笑糗事");
-                                //shareAction.withText(itemsBean.getContent());
-                                actionqq.withText(itemsBean.getContent());
-                                actionqq.withTargetUrl("www.baidu.com");
-                                break;
-                        }
+                        actionqq.withTitle("给你看一条好笑视频");
+                        //shareAction.withText(itemsBean.getContent());
+                        actionqq.withText(itemsBean.getContent());
+                        umVideo = new UMVideo(itemsBean.getHigh_url());
+                        actionqq.withMedia(umVideo);
+                        actionqq.withTargetUrl(itemsBean.getHigh_url());
+                        actionqq.withTargetUrl("http://www.qiushibaike.com/share/"+itemsBean.getId()+"?source=qqapp");
                         actionqq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
                         break;
                     case R.id.copy_id:

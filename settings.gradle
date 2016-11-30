@@ -1,4 +1,4 @@
-include ':app', ':vitamio', ':PushSDK', ':library1'
+include ':app', ':vitamio', ':PushSDK', ':library1', ':daoexamplegenerator'
 include ':library'
 include ':pullToRefreshListFragment'
 include ':pullToRefreshViewPager'

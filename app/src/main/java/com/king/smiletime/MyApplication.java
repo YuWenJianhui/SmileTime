@@ -5,6 +5,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+
+import com.king.utils.GreenDaoManager;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 import com.umeng.socialize.Config;
@@ -49,6 +51,7 @@ public class MyApplication extends Application {
         mContext = getApplicationContext();
         x.Ext.init(this);
         UMShareAPI.get(this);
+        GreenDaoManager.getInstance();
         Config.REDIRECT_URL = "您新浪后台的回调地址";
         NetworkInfo activeNetwork = ((ConnectivityManager)(getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
         if (activeNetwork != null){

@@ -22,8 +22,8 @@ android {
     }
     greendao{
         schemaVersion 1
-        daoPackage 'com.admom.mygreendaotest'
-        targetGenDir 'src/main/java-gen'
+        daoPackage 'com.king.smiletime'
+        targetGenDir 'src/main/java'
     }
 }
 
