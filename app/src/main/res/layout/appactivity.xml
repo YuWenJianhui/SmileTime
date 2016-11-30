@@ -9,7 +9,7 @@
         android:layout_weight="1"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/welcomethree"/>
+        android:src="@mipmap/girl"/>
     <TextView
         android:id="@+id/tv_load"
         android:layout_width="match_parent"
